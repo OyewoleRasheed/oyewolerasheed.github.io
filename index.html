@@ -3,126 +3,61 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>[OYEWOLE RSHEED ADEBAYO] – AI/ML Portfolio</title>
-  <link href="style.css" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background-color: #f5f5f5;
-      color: #333;
-    }
-
-    header {
-      background-color: #0a192f;
-      color: white;
-      padding: 2rem;
-      text-align: center;
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
-    nav a {
-      color: #64ffda;
-      margin: 0 1rem;
-      text-decoration: none;
-    }
-
-    main {
-      padding: 2rem;
-      max-width: 900px;
-      margin: auto;
-    }
-
-    section {
-      margin-bottom: 3rem;
-    }
-
-    article {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      margin-bottom: 1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #0a192f;
-      color: #aaa;
-    }
-
-    a.button {
-      display: inline-block;
-      margin-top: 0.5rem;
-      padding: 0.5rem 1rem;
-      background: #64ffda;
-      color: #0a192f;
-      text-decoration: none;
-      border-radius: 4px;
-      font-weight: bold;
-    }
-
-    @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
-    }
-  </style>
+  <meta name="description" content="Oyewole Rasheed Adebayo – AI/ML Developer Portfolio showcasing machine learning projects and contact info." />
+  <title>Oyewole Rasheed Adebayo – AI/ML Portfolio</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>[Your Name]</h1>
-    <p>AI/ML Developer | Data Enthusiast | Pythonista</p>
-    <nav>
-      <a href="#projects">Projects</a>
-      <a href="#about">About</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <header class="hero">
+    <div class="container">
+      <h1>Oyewole Rasheed Adebayo</h1>
+      <p class="tagline">AI/ML Developer • Data Explorer • Pythonista</p>
+      <nav>
+        <a href="#projects">Projects</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <main>
+  <main class="container">
     <section id="projects">
-      <h2>🧠 Projects</h2>
+      <h2>🧠 Featured Projects</h2>
 
-      <article>
-        <h3>Chatbot using TF-IDF and Logistic Regression</h3>
-        <p>A simple rule-based chatbot that classifies user intent using TF-IDF and logistic regression, deployed with Streamlit.</p>
-        <a href="https://github.com/yourusername/chatbot-streamlit" class="button">View on GitHub</a>
-      </article>
+      <div class="card">
+        <h3>Chatbot using TF-IDF & Logistic Regression</h3>
+        <p>Rule-based chatbot using NLP and scikit-learn. Built with TF-IDF and logistic regression. Deployed with Streamlit.</p>
+        <a href="https://github.com/OyewoleRasheed/End-to-End-Chatbot" class="btn">View on GitHub</a>
+      </div>
 
-      <article>
+      <div class="card">
         <h3>Loan Default Predictor</h3>
-        <p>Predictive model using XGBoost to classify potential loan defaults. Includes data cleaning, feature engineering, and SHAP analysis.</p>
-        <a href="https://github.com/yourusername/loan-prediction-ml" class="button">View on GitHub</a>
-      </article>
+        <p>XGBoost-powered model to classify potential loan defaulters. Includes SHAP-based model interpretability.</p>
+        <a href="https://github.com/OyewoleRasheed/loan-prediction-ml" class="btn">View on GitHub</a>
+      </div>
 
-      <article>
+      <div class="card">
         <h3>Image Classifier with PyTorch</h3>
-        <p>Trained a CNN on CIFAR-10 dataset using PyTorch. Achieved 85%+ accuracy with data augmentation and model tuning.</p>
-        <a href="https://github.com/yourusername/image-classifier-cnn" class="button">View on GitHub</a>
-      </article>
+        <p>Convolutional neural network trained on CIFAR-10 dataset using PyTorch. Achieved 85%+ accuracy.</p>
+        <a href="https://github.com/OyewoleRasheed/image-classifier-cnn" class="btn">View on GitHub</a>
+      </div>
     </section>
 
     <section id="about">
       <h2>👋 About Me</h2>
-      <p>I'm a passionate machine learning enthusiast with a background in [your background]. I enjoy working on end-to-end AI projects, from data preprocessing to model deployment.</p>
+      <p>I’m a passionate AI/ML developer with a background in Computer Engineering. I specialize in building end-to-end machine learning pipelines, deploying models, and solving real-world problems using data-driven methods.</p>
     </section>
 
     <section id="contact">
       <h2>📫 Contact</h2>
-      <p>Email: <a href="mailto:rasheed.oyewole.adebayo@gmail.com">youremail@example.com</a></p>
-      <p>GitHub: <a href="https://github.com/OyewoleRasheed">github.com/yourusername</a></p>
-      <p>LinkedIn: <a href="www.linkedin.com/in/rasheed-adebayo-oyewole-gmnse">linkedin.com/in/yourprofile</a></p>
+      <p>Email: <a href="mailto:rasheed.oyewole.adebayo@gmail.com">rasheed.oyewole.adebayo@gmail.com</a></p>
+      <p>GitHub: <a href="https://github.com/OyewoleRasheed">github.com/OyewoleRasheed</a></p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/rasheed-adebayo-oyewole-gmnse">linkedin.com/in/rasheed-adebayo-oyewole-gmnse</a></p>
     </section>
   </main>
 
   <footer>
-    <p>© [OYEWOLE RASHEED ADEBAYO] – 2025. Powered by GitHub Pages.</p>
+    <p>&copy; 2025 Oyewole Rasheed Adebayo. Built with ❤️ and deployed on GitHub Pages.</p>
   </footer>
 </body>
 </html>
