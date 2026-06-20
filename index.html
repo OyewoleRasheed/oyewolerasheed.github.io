@@ -1,64 +1,677 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Oyewole Rasheed Adebayo – AI/ML Developer Portfolio showcasing machine learning projects and contact info." />
-  <title>Oyewole Rasheed Adebayo – AI/ML Portfolio</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Oyewole Rasheed Adebayo — Electrical Engineer | AI/ML for Power Systems</title>
+<meta name="description" content="Electrical engineer building toward a PhD in Power Systems, applying AI/ML — anomaly detection, predictive modeling, explainable AI — to smart grid monitoring and grid modernization. Deployed AI systems, MSc in AI/ML, background in transmission engineering.">
+
+<meta property="og:title" content="Oyewole Rasheed Adebayo — Electrical Engineer | AI/ML for Power Systems">
+<meta property="og:description" content="Power systems engineer applying deployed, explainable AI experience toward smart grid monitoring and grid modernization research.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://oyewolerasheed.github.io/">
+<meta name="twitter:card" content="summary">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%230E1115%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 text-anchor=%22middle%22 fill=%22%23E8A33D%22 font-family=%22monospace%22>R</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0E1115;
+    --surface:#151A21;
+    --card:#1A2029;
+    --card-hover:#1F2630;
+    --border:#262E38;
+    --border-strong:#3A4452;
+    --text:#E9EBEE;
+    --text-mid:#A4AEBA;
+    --text-dim:#6C7682;
+    --amber:#E8A33D;
+    --amber-dim:#9C7233;
+    --teal:#5FB89C;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'Inter', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+    --maxw:1080px;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit; text-decoration:none;}
+  ul{list-style:none;}
+
+  /* background schematic grid */
+  .grid-bg{
+    position:fixed; inset:0; z-index:0; pointer-events:none;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0,0,0,0.9), transparent 70%);
+  }
+
+  .wrap{max-width:var(--maxw); margin:0 auto; padding:0 24px; position:relative; z-index:1;}
+
+  /* ---------- NAV ---------- */
+  header.nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(14,17,21,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom:1px solid var(--border);
+  }
+  .nav-inner{
+    max-width:var(--maxw); margin:0 auto; padding:16px 24px;
+    display:flex; align-items:center; justify-content:space-between;
+  }
+  .logo{
+    font-family:var(--font-mono); font-weight:600; font-size:15px; color:var(--text);
+    display:flex; align-items:center; gap:8px;
+  }
+  .logo .dot{width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 8px var(--teal); animation:pulse 2.4s ease-in-out infinite;}
+  nav.links{display:flex; gap:28px; align-items:center;}
+  nav.links a{font-size:14px; color:var(--text-mid); font-weight:500; transition:color .15s;}
+  nav.links a:hover{color:var(--amber);}
+  .btn-cv{
+    font-family:var(--font-mono); font-size:13px; font-weight:500;
+    border:1px solid var(--amber-dim); color:var(--amber);
+    padding:7px 14px; border-radius:6px; transition:all .15s;
+    white-space:nowrap;
+  }
+  .btn-cv:hover{background:rgba(232,163,61,0.1); border-color:var(--amber);}
+  .nav-toggle{display:none; background:none; border:none; color:var(--text); font-size:22px; cursor:pointer;}
+
+  @keyframes pulse{0%,100%{opacity:1;} 50%{opacity:.35;}}
+  @media (prefers-reduced-motion: reduce){
+    .logo .dot{animation:none;}
+    html{scroll-behavior:auto;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{padding:96px 0 64px;}
+  .hero-top{
+    display:grid; grid-template-columns:1fr 240px; grid-template-areas:"text photo";
+    gap:44px; align-items:start;
+  }
+  .hero-text{grid-area:text;}
+  .hero-photo-wrap{grid-area:photo; justify-self:end;}
+  .duotone{
+    position:relative; width:240px; aspect-ratio:4/5; overflow:hidden;
+    background:var(--amber); border:1px solid var(--border-strong);
+  }
+  .duotone img{
+    width:100%; height:100%; object-fit:cover; display:block;
+    filter:grayscale(1) contrast(1.04) brightness(1.12);
+    mix-blend-mode:luminosity;
+  }
+  .duotone::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(160deg, rgba(232,163,61,0.1), rgba(14,17,21,0.05) 60%);
+  }
+  @media (max-width:680px){
+    .hero-top{grid-template-columns:1fr; grid-template-areas:"photo" "text"; gap:22px;}
+    .hero-photo-wrap{justify-self:start;}
+    .duotone{width:160px;}
+  }
+  .eyebrow{
+    font-family:var(--font-mono); font-size:13px; letter-spacing:0.08em;
+    color:var(--amber); text-transform:uppercase; margin-bottom:18px;
+    display:flex; align-items:center; gap:10px;
+  }
+  .eyebrow::before{content:''; width:18px; height:1px; background:var(--amber-dim);}
+  h1.hero-title{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(34px, 6vw, 56px); line-height:1.08; letter-spacing:-0.01em;
+    margin-bottom:22px; max-width:760px;
+  }
+  h1.hero-title .hl{color:var(--amber);}
+  .hero-sub{
+    font-size:17px; color:var(--text-mid); max-width:600px; margin-bottom:36px;
+  }
+  .hero-cta{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:52px;}
+  .btn{
+    font-family:var(--font-body); font-weight:600; font-size:14.5px;
+    padding:12px 22px; border-radius:8px; transition:all .15s;
+    display:inline-flex; align-items:center; gap:8px;
+  }
+  .btn-primary{background:var(--amber); color:#16100A;}
+  .btn-primary:hover{background:#f3b558; transform:translateY(-1px);}
+  .btn-outline{border:1px solid var(--border-strong); color:var(--text);}
+  .btn-outline:hover{border-color:var(--amber); color:var(--amber);}
+
+  /* telemetry strip — signature element */
+  .telemetry{
+    border:1px solid var(--border); border-radius:10px;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
+    display:grid; grid-template-columns:repeat(4, 1fr);
+  }
+  .telemetry .cell{
+    padding:16px 18px; border-right:1px solid var(--border);
+  }
+  .telemetry .cell:last-child{border-right:none;}
+  .telemetry .label{
+    font-family:var(--font-mono); font-size:11px; letter-spacing:0.06em;
+    color:var(--text-dim); text-transform:uppercase; margin-bottom:6px;
+  }
+  .telemetry .value{font-family:var(--font-mono); font-size:13.5px; color:var(--text);}
+  .telemetry .value.live{color:var(--teal); display:flex; align-items:center; gap:7px;}
+  .telemetry .blink{width:6px; height:6px; border-radius:50%; background:var(--teal); box-shadow:0 0 6px var(--teal); animation:pulse 2.4s ease-in-out infinite;}
+
+  @media (max-width:680px){
+    .telemetry{grid-template-columns:repeat(2, 1fr);}
+    .telemetry .cell{border-bottom:1px solid var(--border);}
+  }
+
+  /* ---------- SECTIONS ---------- */
+  section{padding:72px 0;}
+  section.bordered{border-top:1px solid var(--border);}
+  .section-head{margin-bottom:38px;}
+  .section-head .eyebrow{margin-bottom:10px;}
+  h2.section-title{
+    font-family:var(--font-display); font-weight:600; font-size:28px;
+  }
+  .section-desc{color:var(--text-mid); font-size:15px; margin-top:10px; max-width:600px;}
+
+  /* ---------- PROJECT CARDS ---------- */
+  .grid-2{display:grid; grid-template-columns:1fr 1fr; gap:20px;}
+  @media (max-width:760px){.grid-2{grid-template-columns:1fr;}}
+
+  .card{
+    background:var(--card); border:1px solid var(--border); border-radius:12px;
+    padding:26px; transition:border-color .2s, transform .2s, background .2s;
+    display:flex; flex-direction:column;
+  }
+  .card:hover{border-color:var(--border-strong); background:var(--card-hover); transform:translateY(-2px);}
+
+  .card-top{display:flex; justify-content:space-between; align-items:flex-start; gap:12px; margin-bottom:12px;}
+  .card-title{font-family:var(--font-display); font-weight:600; font-size:18.5px; line-height:1.3;}
+  .status-pill{
+    font-family:var(--font-mono); font-size:10.5px; letter-spacing:0.04em;
+    border-radius:20px; padding:4px 9px; white-space:nowrap; flex-shrink:0;
+    display:flex; align-items:center; gap:5px; margin-top:3px;
+  }
+  .status-pill.live{color:var(--teal); border:1px solid rgba(95,184,156,0.35); background:rgba(95,184,156,0.08);}
+  .status-pill.live .blink{width:5px; height:5px; border-radius:50%; background:var(--teal); animation:pulse 2.4s ease-in-out infinite;}
+  .status-pill.lab{color:var(--text-dim); border:1px solid var(--border-strong);}
+
+  .card-desc{font-size:14.5px; color:var(--text-mid); margin-bottom:16px; flex-grow:1;}
+
+  .stat-row{display:flex; gap:18px; margin-bottom:18px; flex-wrap:wrap;}
+  .stat{font-family:var(--font-mono);}
+  .stat .n{color:var(--amber); font-size:15px; font-weight:600; display:block;}
+  .stat .l{color:var(--text-dim); font-size:10.5px; text-transform:uppercase; letter-spacing:0.04em;}
+
+  .tags{display:flex; flex-wrap:wrap; gap:7px; margin-bottom:20px;}
+  .tag{
+    font-family:var(--font-mono); font-size:11px; color:var(--text-mid);
+    border:1px solid var(--border); border-radius:5px; padding:3px 8px;
+  }
+
+  .card-actions{display:flex; gap:10px; margin-top:auto;}
+  .link-btn{
+    font-size:13.5px; font-weight:600; color:var(--text); display:flex; align-items:center; gap:6px;
+    border:1px solid var(--border-strong); padding:8px 14px; border-radius:7px; transition:all .15s;
+  }
+  .link-btn:hover{border-color:var(--amber); color:var(--amber);}
+  .link-btn.solid{background:var(--amber); color:#16100A; border-color:var(--amber);}
+  .link-btn.solid:hover{background:#f3b558;}
+
+  /* secondary project (single column wide) */
+  .card-wide{margin-top:20px;}
+  .card-wide .card-top{margin-bottom:8px;}
+
+  /* learning grid - lighter cards */
+  .grid-2.lighter .card{padding:22px; background:transparent;}
+  .grid-2.lighter .card-title{font-size:16.5px;}
+  .grid-2.lighter .card-desc{font-size:13.5px;}
+
+  /* ---------- RESEARCH ---------- */
+  .research-item{
+    border-top:1px solid var(--border); padding:22px 0; display:grid;
+    grid-template-columns:170px 1fr; gap:24px;
+  }
+  .research-item:last-child{border-bottom:1px solid var(--border);}
+  @media (max-width:680px){.research-item{grid-template-columns:1fr; gap:6px;}}
+  .research-year{font-family:var(--font-mono); color:var(--text-dim); font-size:13px;}
+  .research-title{font-weight:600; font-size:15.5px; margin-bottom:6px;}
+  .research-desc{color:var(--text-mid); font-size:14px; margin-bottom:10px;}
+  .research-supervisor{font-size:13px; color:var(--text-dim); font-style:italic; margin-bottom:8px;}
+
+  /* ---------- EXPERIENCE TIMELINE ---------- */
+  .timeline{position:relative; padding-left:28px; border-left:1px solid var(--border);}
+  .t-item{position:relative; padding-bottom:34px;}
+  .t-item:last-child{padding-bottom:0;}
+  .t-item::before{
+    content:''; position:absolute; left:-33px; top:4px;
+    width:9px; height:9px; border-radius:50%; background:var(--bg);
+    border:2px solid var(--amber);
+  }
+  .t-date{font-family:var(--font-mono); font-size:12px; color:var(--amber); margin-bottom:5px;}
+  .t-role{font-weight:600; font-size:16px; margin-bottom:2px;}
+  .t-org{font-size:13.5px; color:var(--text-dim); margin-bottom:10px;}
+  .t-desc{font-size:14px; color:var(--text-mid); margin:0; padding-left:18px;}
+  .t-desc li{position:relative; margin-bottom:5px;}
+  .t-desc li::before{content:'—'; position:absolute; left:-18px; color:var(--text-dim);}
+
+  /* ---------- TWO-COL (education / skills) ---------- */
+  .grid-edu{display:grid; grid-template-columns:1fr 1fr; gap:24px;}
+  @media (max-width:680px){.grid-edu{grid-template-columns:1fr;}}
+  .edu-card{border:1px solid var(--border); border-radius:12px; padding:22px;}
+  .edu-degree{font-weight:600; font-size:15.5px; margin-bottom:4px;}
+  .edu-school{font-size:13.5px; color:var(--text-dim); margin-bottom:10px;}
+  .edu-thesis{font-size:13px; color:var(--text-mid); font-style:italic; border-left:2px solid var(--border-strong); padding-left:10px;}
+
+  .skills-grid{display:grid; grid-template-columns:1fr 1fr; gap:28px; margin-top:8px;}
+  @media (max-width:680px){.skills-grid{grid-template-columns:1fr;}}
+  .skill-group .label{font-family:var(--font-mono); font-size:12px; color:var(--text-dim); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:10px;}
+  .skill-tags{display:flex; flex-wrap:wrap; gap:7px;}
+  .skill-tags .tag{color:var(--text);}
+
+  /* certs */
+  .certs-grid{display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin-top:8px;}
+  @media (max-width:680px){.certs-grid{grid-template-columns:1fr;}}
+  .cert-item{font-size:13.5px; color:var(--text-mid); padding:8px 0; border-bottom:1px solid var(--border); display:flex; justify-content:space-between; gap:10px;}
+  .cert-item .yr{color:var(--text-dim); font-family:var(--font-mono); font-size:11.5px; white-space:nowrap;}
+
+  /* achievements */
+  .ach-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:8px;}
+  @media (max-width:760px){.ach-grid{grid-template-columns:1fr;}}
+  .ach-card{border:1px solid var(--border); border-radius:10px; padding:18px;}
+  .ach-card .ach-title{font-weight:600; font-size:14.5px; margin-bottom:6px;}
+  .ach-card .ach-desc{font-size:13px; color:var(--text-mid);}
+
+  /* ---------- FOOTER / CONTACT ---------- */
+  footer{border-top:1px solid var(--border); padding:60px 0 40px;}
+  .contact-title{font-family:var(--font-display); font-size:30px; font-weight:600; margin-bottom:14px;}
+  .contact-sub{color:var(--text-mid); font-size:15px; max-width:480px; margin-bottom:30px;}
+  .contact-links{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:48px;}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+    padding-top:24px; border-top:1px solid var(--border);
+    font-size:12.5px; color:var(--text-dim); font-family:var(--font-mono);
+  }
+
+  /* content is visible by default — no JS dependency for showing content */
+  .reveal{opacity:1;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+  }
+
+  /* mobile nav */
+  @media (max-width:760px){
+    nav.links{
+      position:fixed; top:64px; left:0; right:0; height:calc(100vh - 64px);
+      background:var(--bg); flex-direction:column; align-items:flex-start;
+      padding:28px 24px; gap:22px; transform:translateX(100%); transition:transform .25s;
+      border-top:1px solid var(--border); overflow-y:auto;
+    }
+    nav.links.open{transform:translateX(0);}
+    nav.links a{font-size:17px;}
+    .nav-toggle{display:block;}
+    .btn-cv{display:none;}
+    nav.links .btn-cv{display:inline-block; margin-top:10px;}
+  }
+</style>
 </head>
 <body>
-  <header class="hero">
-    <div class="container">
-      <h1>Oyewole Rasheed Adebayo</h1>
-      <p class="tagline">AI/ML Developer • Data Explorer • Pythonista</p>
-      <nav>
-        <a href="#projects">Projects</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-      </nav>
+
+<div class="grid-bg"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a href="#top" class="logo"><span class="dot"></span> OYEWOLE.RASHEED</a>
+    <nav class="links" id="navLinks">
+      <a href="#projects">Projects</a>
+      <a href="#research">Research</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+      <a href="cv/Oyewole_Rasheed_Adebayo_CV.docx" class="btn-cv">↓ CV</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">☰</button>
+  </div>
+</header>
+
+<main class="wrap" id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-top">
+      <div class="hero-text">
+        <div class="eyebrow">Electrical Engineer · AI/ML for Power Systems</div>
+        <h1 class="hero-title">I'm an electrical engineer who built deep AI/ML experience — and now I'm applying it to <span class="hl">the grid</span>.</h1>
+        <p class="hero-sub">Trained in power systems — 330kV transmission operations, a PV-DG hybrid power system thesis — before an AI/ML-intensive MSc gave me hands-on experience shipping production machine learning systems: anomaly detection, explainable AI, and rigorous model evaluation. I'm now pursuing a PhD applying that experience to power systems — smart grid monitoring, fault and anomaly detection, and grid modernization.</p>
+
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">View Projects</a>
+          <a href="cv/Oyewole_Rasheed_Adebayo_CV.docx" class="btn btn-outline">Download CV</a>
+          <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        </div>
+      </div>
+      <div class="hero-photo-wrap">
+        <div class="duotone">
+          <img src="img/website_photo.jpg" alt="Oyewole Rasheed Adebayo" width="700" height="875">
+        </div>
+      </div>
     </div>
-  </header>
 
-  <main class="container">
-    <section id="projects">
-      <h2>🧠 Featured Projects</h2>
+    <div class="telemetry reveal">
+      <div class="cell">
+        <div class="label">Based In</div>
+        <div class="value">Lagos, Nigeria</div>
+      </div>
+      <div class="cell">
+        <div class="label">Foundation</div>
+        <div class="value">Electrical & Power Systems Eng.</div>
+      </div>
+      <div class="cell">
+        <div class="label">AI Toolkit</div>
+        <div class="value">ML · Anomaly Detection · XAI</div>
+      </div>
+      <div class="cell">
+        <div class="label">Next</div>
+        <div class="value live"><span class="blink"></span> Pursuing PhD — Smart Grids</div>
+      </div>
+    </div>
+  </section>
 
-      <div class="card">
-        <h3>Chatbot using TF-IDF & Logistic Regression</h3>
-        <p>Rule-based chatbot using NLP and scikit-learn. Built with TF-IDF and logistic regression. Deployed with Streamlit.</p>
-        <a href="https://github.com/OyewoleRasheed/End-to-End-Chatbot" class="btn">View on GitHub</a>
-        <a href="https://oyewolerasheed-end-to-end-chatbot-chatbot-app-7tf7r3.streamlit.app/" class="btn">Try it out</a>
+  <!-- PROJECTS -->
+  <section id="projects" class="bordered">
+    <div class="section-head reveal">
+      <div class="eyebrow">Featured Projects</div>
+      <h2 class="section-title">Deployed AI Systems</h2>
+      <p class="section-desc">Production systems — not just notebooks. Each one applies explainable, sensor-driven AI to real operational data — the same pipeline I want to bring to grid asset monitoring and fault detection.</p>
+    </div>
+
+    <div class="grid-2">
+      <div class="card reveal">
+        <div class="card-top">
+          <div class="card-title">HydrauProtect AI</div>
+          <div class="status-pill live"><span class="blink"></span> LIVE</div>
+        </div>
+        <p class="card-desc">Diagnoses pump leakage and accumulator pressure faults from SCADA sensor data, explains the diagnosis with SHAP, and generates plain-English maintenance reports automatically — the same sensor-to-explanation pipeline used in grid asset health monitoring.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="n">16</span><span class="l">Sensors</span></div>
+          <div class="stat"><span class="n">81</span><span class="l">Features</span></div>
+          <div class="stat"><span class="n">2,205</span><span class="l">Cycles</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag">XGBoost</span><span class="tag">SHAP</span><span class="tag">Flask</span><span class="tag">Groq · Llama 3.1</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://hydrauprotectai.up.railway.app" target="_blank" rel="noopener" class="link-btn solid">Live Demo ↗</a>
+          <a href="https://github.com/OyewoleRasheed/HydrauProtect-AI-Hydraulic-System-Health-Monitoring" target="_blank" rel="noopener" class="link-btn">Code</a>
+        </div>
       </div>
 
-      <div class="card">
-        <h3>Loan Default Predictor</h3>
-        <p>XGBoost-powered model to classify potential loan defaulters. Includes SHAP-based model interpretability.</p>
-        <a href="https://github.com/OyewoleRasheed/loan-prediction-ml" class="btn">View on GitHub</a>
+      <div class="card reveal">
+        <div class="card-top">
+          <div class="card-title">AI Predictive Maintenance</div>
+          <div class="status-pill live"><span class="blink"></span> LIVE</div>
+        </div>
+        <p class="card-desc">Predicts industrial machine failure and tells engineers what's going wrong and what to do about it, combining a Random Forest classifier with an LLM explanation layer — directly transferable to fault prediction in transmission and distribution equipment.</p>
+        <div class="stat-row">
+          <div class="stat"><span class="n">4</span><span class="l">Failure Modes</span></div>
+          <div class="stat"><span class="n">10K</span><span class="l">Scenarios</span></div>
+          <div class="stat"><span class="n">REST</span><span class="l">API</span></div>
+        </div>
+        <div class="tags">
+          <span class="tag">Random Forest</span><span class="tag">Flask</span><span class="tag">Groq · Llama 3.3 70B</span>
+        </div>
+        <div class="card-actions">
+          <a href="https://ai-predictive-maintenance-system.onrender.com" target="_blank" rel="noopener" class="link-btn solid">Live Demo ↗</a>
+          <a href="https://github.com/OyewoleRasheed/predictive_maintenance" target="_blank" rel="noopener" class="link-btn">Code</a>
+        </div>
       </div>
+    </div>
 
-      <div class="card">
-        <h3>Image Classifier with PyTorch</h3>
-        <p>Convolutional neural network trained on CIFAR-10 dataset using PyTorch. Achieved 85%+ accuracy.</p>
-        <a href="https://github.com/OyewoleRasheed/image-classifier-cnn" class="btn">View on GitHub</a>
+    <div class="card card-wide reveal">
+      <div class="card-top">
+        <div class="card-title" style="font-size:16.5px;">Dynamic Pricing Strategy for a Ride-Hailing Company</div>
+        <div class="status-pill lab">NOTEBOOK</div>
       </div>
-    </section>
+      <p class="card-desc" style="margin-bottom:14px;">A RandomForestRegressor model that estimates ride prices from rider/driver supply-demand ratios, vehicle type, and ride duration.</p>
+      <div class="card-actions">
+        <a href="https://github.com/OyewoleRasheed/Dynamic-Pricing-strategy-for-a-ride-hailing-company" target="_blank" rel="noopener" class="link-btn">Code ↗</a>
+      </div>
+    </div>
 
-    <section id="about">
-      <h2>👋 About Me</h2>
-      <p>I’m a passionate AI/ML developer with a background in Computer Engineering. I specialize in building end-to-end machine learning pipelines, deploying models, and solving real-world problems using data-driven methods.</p>
-    </section>
+    <div class="section-head reveal" style="margin-top:56px; margin-bottom:22px;">
+      <div class="eyebrow">Learning & Exploration</div>
+      <h2 class="section-title" style="font-size:21px;">Agentic AI & RAG Fundamentals</h2>
+      <p class="section-desc">Built while working through Hugging Face's Agents Course — extended beyond the course material to apply the concepts to original scenarios.</p>
+    </div>
+    <div class="grid-2 lighter">
+      <div class="card reveal">
+        <div class="card-top">
+          <div class="card-title">Agentic RAG for Query Response</div>
+        </div>
+        <p class="card-desc">A hybrid web + knowledge-base retrieval agent using <code>smolagents</code>, DuckDuckGo search, and BM25 semantic search over a custom knowledge base.</p>
+        <div class="card-actions">
+          <a href="https://github.com/OyewoleRasheed/Alfred-s-Party-Planning-Agentic-RAG" target="_blank" rel="noopener" class="link-btn">Code ↗</a>
+        </div>
+      </div>
+      <div class="card reveal">
+        <div class="card-top">
+          <div class="card-title">Code-Capable AI Agents</div>
+        </div>
+        <p class="card-desc">A <code>CodeAgent</code> built with <code>smolagents</code> and the Hugging Face Inference API, using custom tool-decorated functions to complete multi-step tasks.</p>
+        <div class="card-actions">
+          <a href="https://github.com/OyewoleRasheed/Building-AI-Agents-that-Use-Code" target="_blank" rel="noopener" class="link-btn">Code ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-      <h2>📫 Contact</h2>
-      <p>Email: <a href="mailto:rasheed.oyewole.adebayo@gmail.com">rasheed.oyewole.adebayo@gmail.com</a></p>
-      <p>GitHub: <a href="https://github.com/OyewoleRasheed">github.com/OyewoleRasheed</a></p>
-      <p>LinkedIn: <a href="https://www.linkedin.com/in/rasheed-adebayo-oyewole-gmnse">linkedin.com/in/rasheed-adebayo-oyewole-gmnse</a></p>
-    </section>
-  </main>
+  <!-- RESEARCH -->
+  <section id="research" class="bordered">
+    <div class="section-head reveal">
+      <div class="eyebrow">Graduate Research</div>
+      <h2 class="section-title">Where the AI Experience Comes From</h2>
+      <p class="section-desc">My MSc was an AI/ML-intensive interdisciplinary degree. Three projects from it gave me hands-on experience with anomaly detection, explainable model evaluation, and rigorous experimental design — the first is the one most directly relevant to power systems.</p>
+    </div>
 
-  <footer>
-    <p>&copy; 2025 Oyewole Rasheed Adebayo. Built with ❤️ and deployed on GitHub Pages.</p>
+    <div style="margin-top:8px;">
+      <div class="research-item reveal" style="border-top:none; padding-top:0;">
+        <div class="research-year">2024</div>
+        <div>
+          <div class="research-title">Anomaly Detection in Irradiation and Weather Data Using Supervised and Unsupervised Learning</div>
+          <div class="research-supervisor">Supervised by Dr. Ikram Chari & Dr. Robert Basmadjian, UM6P</div>
+          <p class="research-desc">Applied LOF and XGBoost to detect anomalies in solar irradiation and weather data across 12 German cities — directly applicable to renewable-energy monitoring and anomaly detection in grid sensor data.</p>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-7XmFmcAAAAJ&citation_for_view=-7XmFmcAAAAJ:u5HHmVD_uO8C" target="_blank" rel="noopener" class="link-btn" style="display:inline-flex;">View on Scholar ↗</a>
+        </div>
+      </div>
+      <div class="research-item reveal">
+        <div class="research-year">2025</div>
+        <div>
+          <div class="research-title">Master's Thesis: LLM-Assisted Deliberation as Structural Argument Advisor</div>
+          <div class="research-supervisor">MSc Collective Intelligence, Mohammed VI Polytechnic University</div>
+          <p class="research-desc">Designed and statistically validated an LLM pipeline that diagnoses structural weaknesses in written arguments and suggests repairs — training in rigorous AI evaluation methodology and experimental design, applied here to text rather than sensor data.</p>
+        </div>
+      </div>
+      <div class="research-item reveal">
+        <div class="research-year">2025</div>
+        <div>
+          <div class="research-title">Sentiment Analysis of Online Discussion on Climate Change</div>
+          <div class="research-supervisor">Supervised by Dr. Manal El Akrouchi, UM6P</div>
+          <p class="research-desc">Compared VADER, TextBlob, ClimateBERT, and BERT for sentiment classification, with BERTopic for topic modeling — a methodology equally applicable to analyzing public sentiment around energy policy and grid infrastructure projects.</p>
+          <a href="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=-7XmFmcAAAAJ&citation_for_view=-7XmFmcAAAAJ:9yKSN-GCB0IC" target="_blank" rel="noopener" class="link-btn" style="display:inline-flex;">View on Scholar ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="bordered">
+    <div class="section-head reveal">
+      <div class="eyebrow">Career</div>
+      <h2 class="section-title">Experience</h2>
+    </div>
+    <div class="timeline">
+      <div class="t-item reveal">
+        <div class="t-date">JUL 2025 — PRESENT</div>
+        <div class="t-role">Graduate Trainee</div>
+        <div class="t-org">Dangote Industries Limited, Lagos</div>
+        <ul class="t-desc">
+          <li>Shadowing senior engineers across plant operations to learn industrial processes and equipment hands-on.</li>
+          <li>Identifying workflow inefficiencies and providing data-driven improvement recommendations.</li>
+        </ul>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">FEB 2025 — AUG 2025</div>
+        <div class="t-role">AI Engineering Intern</div>
+        <div class="t-org">Deliberatorium · MIT Center for Collective Intelligence / UM6P</div>
+        <ul class="t-desc">
+          <li>Built a GPT-4o pipeline to decompose arguments into atomic units, flag structural weaknesses, and generate improved rewrites.</li>
+          <li>Designed multi-step prompt strategies for classification, critique, and rewriting tasks, with quantitative quality metrics and statistical validation.</li>
+        </ul>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">MAR 2023 — OCT 2023</div>
+        <div class="t-role">Software Automation Engineer</div>
+        <div class="t-org">Huawei Technologies Co., Ltd, Lagos</div>
+        <ul class="t-desc">
+          <li>Managed telecom network automation projects and built business processes for telecom clients.</li>
+          <li>Built web applications on Huawei's operations platform; optimized dashboards using TQL.</li>
+        </ul>
+      </div>
+      <div class="t-item reveal">
+        <div class="t-date">APR 2022 — MAR 2023</div>
+        <div class="t-role">Junior Developer (NYSC Intern)</div>
+        <div class="t-org">Huawei Technologies Co., Ltd</div>
+        <ul class="t-desc">
+          <li>Performed UAT testing on system software and optimized business processes.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION + SKILLS -->
+  <section class="bordered">
+    <div class="section-head reveal">
+      <div class="eyebrow">Background</div>
+      <h2 class="section-title">Education</h2>
+    </div>
+    <div class="grid-edu reveal">
+      <div class="edu-card">
+        <div class="edu-degree">MSc, Collective Intelligence</div>
+        <div class="edu-school">Mohammed VI Polytechnic University, Morocco · 2023–2025 · 16.01/20</div>
+        <div class="edu-thesis">AI/ML-intensive interdisciplinary program — machine learning, multi-agent systems, NLP, and decision science.</div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-degree">B.Eng., Electrical & Electronic Engineering</div>
+        <div class="edu-school">Ekiti State University, Nigeria · 2015–2022 · CGPA 4.64/5.00, Rank 3/86</div>
+        <div class="edu-thesis">"Feasibility Study and Comparative Analysis of a PV-DG Hybrid Power System"</div>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:56px;">
+      <h2 class="section-title">Skills</h2>
+    </div>
+    <div class="skills-grid reveal">
+      <div class="skill-group">
+        <div class="label">Domain Knowledge</div>
+        <div class="skill-tags">
+          <span class="tag">Power Systems</span><span class="tag">Transmission & Distribution</span><span class="tag">SCADA</span><span class="tag">Renewable Energy (PV)</span><span class="tag">Industrial Plant Operations</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Programming & ML</div>
+        <div class="skill-tags">
+          <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">PyTorch</span><span class="tag">TensorFlow</span><span class="tag">pandas</span><span class="tag">SQL</span><span class="tag">R</span><span class="tag">JavaScript</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Platforms & Tools</div>
+        <div class="skill-tags">
+          <span class="tag">Flask</span><span class="tag">Groq / HF Inference API</span><span class="tag">Git/GitHub</span><span class="tag">Render</span><span class="tag">Railway</span><span class="tag">Colab</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Techniques</div>
+        <div class="skill-tags">
+          <span class="tag">Anomaly Detection</span><span class="tag">Explainable AI (SHAP)</span><span class="tag">Sentiment & Topic Modeling</span><span class="tag">Agentic AI / RAG</span><span class="tag">Data Wrangling</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="label">Soft Skills</div>
+        <div class="skill-tags">
+          <span class="tag">Project Leadership</span><span class="tag">Technical Writing</span><span class="tag">Presentation</span><span class="tag">Cross-functional Collaboration</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACHIEVEMENTS + CERTS -->
+  <section class="bordered">
+    <div class="section-head reveal">
+      <div class="eyebrow">Recognition</div>
+      <h2 class="section-title">Achievements</h2>
+    </div>
+    <div class="ach-grid reveal">
+      <div class="ach-card">
+        <div class="ach-title">🏆 Winner, Green Hydrogen Hackathon</div>
+        <div class="ach-desc">#gh2camp, Morocco (2024) — fully-funded study trip to FAU Erlangen-Nürnberg, Germany, sponsored by MED•GEM and the EU.</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-title">🎓 Ibn Rochd Foundation Scholarship</div>
+        <div class="ach-desc">Full funding for the MSc in Collective Intelligence at UM6P (2023).</div>
+      </div>
+      <div class="ach-card">
+        <div class="ach-title">🥇 First Class Award</div>
+        <div class="ach-desc">Academic excellence and commendable conduct, Ekiti State University (2022).</div>
+      </div>
+    </div>
+
+    <div class="section-head reveal" style="margin-top:56px;">
+      <h2 class="section-title" style="font-size:21px;">Selected Certifications</h2>
+    </div>
+    <div class="certs-grid reveal">
+      <div class="cert-item"><span>Applied Data Science Lab — WorldQuant University</span><span class="yr">2024</span></div>
+      <div class="cert-item"><span>Intro to Deep Learning — Kaggle</span><span class="yr">2025</span></div>
+      <div class="cert-item"><span>Intermediate Machine Learning — Kaggle</span><span class="yr">2025</span></div>
+      <div class="cert-item"><span>SQL Programming Essentials — Udemy</span><span class="yr">2025</span></div>
+      <div class="cert-item"><span>Data Analysis with R — Google/Coursera</span><span class="yr">2023</span></div>
+      <div class="cert-item"><span>Programming with JavaScript — Meta/Coursera</span><span class="yr">2023</span></div>
+      <div class="cert-item"><span>Graduate Member — Nigerian Society of Engineers</span><span class="yr">2023</span></div>
+      <div class="cert-item"><span>Effective Problem Solving — UC Davis/Coursera</span><span class="yr">2022</span></div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <footer id="contact">
+    <div class="contact-title">Let's talk.</div>
+    <p class="contact-sub">Currently applying for PhD positions in Power Systems / Electrical Engineering, focused on applying AI/ML to smart grid monitoring and grid modernization. Also open to research collaborations and roles that build toward that.</p>
+    <div class="contact-links">
+      <a href="mailto:rasheed.oyewole.adebayo@gmail.com" class="btn btn-primary">Email Me</a>
+      <a href="https://www.linkedin.com/in/rasheed-adebayo-oyewole-gmnse/" target="_blank" rel="noopener" class="btn btn-outline">LinkedIn</a>
+      <a href="https://github.com/OyewoleRasheed" target="_blank" rel="noopener" class="btn btn-outline">GitHub</a>
+      <a href="cv/OYEWOLE_RASHEED__ADEBAYO--CV.pdf" class="btn btn-outline">Download CV</a>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Oyewole Rasheed Adebayo</span>
+      <span>Built & deployed on GitHub Pages</span>
+    </div>
   </footer>
+
+</main>
+
+<script>
+  // mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
 </body>
 </html>
